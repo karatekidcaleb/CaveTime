@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://unt8ue6iqjin"]
+
+[ext_resource type="Script" path="res://Mob.cs" id="1_21p1n"]
+[ext_resource type="Texture2D" uid="uid://b8e6ql12victx" path="res://015.png" id="2_6jfld"]
+[ext_resource type="Texture2D" uid="uid://sd5b0d16id7y" path="res://016.png" id="3_mfvhx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sut2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6jfld")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mfvhx")
+}],
+"loop": true,
+"name": &"dog",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6vv5j"]
+radius = 61.0
+height = 188.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_21p1n")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sut2a")
+animation = &"dog"
+frame_progress = 0.808136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6vv5j")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
