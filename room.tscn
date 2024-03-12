@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc5ctr3tgcwb0"]
+
+[ext_resource type="Script" path="res://room.cs" id="1_up835"]
+[ext_resource type="Texture2D" uid="uid://bukd76ju0wmx0" path="res://image.png" id="1_us4nc"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_up835")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("1_us4nc")

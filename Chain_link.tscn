@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm0tijfi278m5"]
+
+[ext_resource type="Script" path="res://Chain_link.cs" id="1_wmw7g"]
+[ext_resource type="Texture2D" uid="uid://cxew784uf4eet" path="res://chainLink.png" id="2_onifk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wpow8"]
+radius = 76.0
+height = 232.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y51i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_onifk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chain_Link" type="Area2D"]
+scale = Vector2(0.13, 0.13)
+script = ExtResource("1_wmw7g")
+Chain_Momentum = 0.235
+
+[node name="LinkCollider" type="CollisionShape2D" parent="."]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_wpow8")
+
+[node name="LinkSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(85.4362, 39.0771)
+scale = Vector2(1.485, 0.967)
+sprite_frames = SubResource("SpriteFrames_y51i2")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
